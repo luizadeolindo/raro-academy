@@ -2,12 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { simpleSliderProps } from "./SimpleSliderTypes";
 
-export type simpleSliderProps = {
-  children: React.ReactNode;
-}
-
-export const SimpleSlider = ({children}: simpleSliderProps) => {
+export const SimpleSlider = ({ children }: simpleSliderProps) => {
   const settings = {
     dots: true,
     infinite: false,
@@ -22,21 +19,17 @@ export const SimpleSlider = ({children}: simpleSliderProps) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-        }
+        },
       },
       {
         breakpoint: 930,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-        }
+        },
       },
-    ]
+    ],
   };
 
-  return (
-    <Slider {...settings}>      
-        {children}      
-    </Slider>
-  );
-}
+  return <Slider {...settings}>{children}</Slider>;
+};

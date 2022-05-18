@@ -1,10 +1,5 @@
 import "./Button.css";
-
-type ButtonProps = {
-  type?: "submit";
-  disabled?: boolean;
-  children: string;
-};
+import { ButtonProps } from "./ButtonTypes";
 
 export const Button: React.FC<ButtonProps> = ({
   type,

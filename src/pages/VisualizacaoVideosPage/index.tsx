@@ -79,6 +79,7 @@ export const VisualizacaoVideosPage = () => {
     comments();
     loadVideo();
     listVideos();
+
     if (isAuthenticated) getFavoriteVideos();
   }, []);
 

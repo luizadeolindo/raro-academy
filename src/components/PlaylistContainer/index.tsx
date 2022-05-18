@@ -1,8 +1,6 @@
 import "./PlaylistContainer.css";
+import { PlaylistContainerProps } from "./PlaylistContainerTypes";
 
-type PlaylistContainerProps = {
-  children: React.ReactNode;
-};
 export const PlaylistContainer = ({ children }: PlaylistContainerProps) => {
   return <div className="playlistContainer">{children}</div>;
 };
