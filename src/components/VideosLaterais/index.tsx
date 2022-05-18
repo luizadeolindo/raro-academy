@@ -84,7 +84,7 @@ export const VideosLaterais = ({
       <div className="aside">
         <Link to={`/videos/${id}`}>
           <div className="videosLaterais">
-            <img src={thumbUrl} alt="videothumb" />
+            <img alt="videothumb" src={thumbUrl} />
             {isAuthenticated ? (
               <button
                 className="favorite"

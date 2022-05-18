@@ -72,7 +72,7 @@ export const VideoPlayer = ({
   return (
     <>
       <div className="containerVideoDados">
-        <div className="titulo">
+        <div className="tituloo">
           <h1>
             {nome}{" "}
             {isAuthenticated ? (
@@ -98,7 +98,7 @@ export const VideoPlayer = ({
           </div>
         </div>
         <div className="v">
-          {video.thumbUrl ? (
+          {video.thumbUrl && (
             <ReactPlayer
               muted={true}
               width={"100%"}
@@ -108,8 +108,6 @@ export const VideoPlayer = ({
               url={url}
               light={thumbUrl}
             />
-          ) : (
-            <></>
           )}
         </div>
       </div>

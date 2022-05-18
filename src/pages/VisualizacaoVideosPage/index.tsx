@@ -79,7 +79,7 @@ export const VisualizacaoVideosPage = () => {
     comments();
     loadVideo();
     listVideos();
-    getFavoriteVideos();
+    if (isAuthenticated) getFavoriteVideos();
   }, []);
 
   useEffect(() => {

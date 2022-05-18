@@ -1,5 +1,5 @@
-h1{
-  color: #4E47C2;
+h1 {
+  color: #4e47c2;
   font-size: 1.5rem;
 }
 
@@ -8,20 +8,24 @@ h1::after {
   display: block;
   width: 100px;
   height: 4px;
-  background: linear-gradient(270.01deg, #4E47C2 -0.01%, rgba(78, 71, 194, 0) 237.73%);
+  background: linear-gradient(
+    270.01deg,
+    #4e47c2 -0.01%,
+    rgba(78, 71, 194, 0) 237.73%
+  );
   border-radius: 4px;
-  margin-top: 8px; 
+  margin-top: 8px;
 }
 
-.containerVideoDados {  
-  width: 100%;  
+.containerVideoDados {
+  width: 100%;
 }
 
-.titulo {
+.tituloo {
   position: relative;
 }
 .createdAt {
-  color:#15143E;  
+  color: #15143e;
   font-size: 0.75rem;
   font-weight: bold;
   margin-top: 8px;
@@ -42,7 +46,7 @@ h1::after {
   transition: 0.7s;
   margin: 0 4px;
 }
-.favoritee img{
+.favoritee img {
   width: 100%;
   height: 100%;
 }
@@ -50,21 +54,21 @@ h1::after {
   opacity: 0.5;
 }
 
-.v{
+.v {
   width: 680px;
   height: 380px;
 }
 
-@media (max-width: 1200px){
-  .containerVideoDados{
+@media (max-width: 1200px) {
+  .containerVideoDados {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 }
 
-@media (max-width: 720px){
-  .v{
+@media (max-width: 720px) {
+  .v {
     width: 100%;
     height: 300px;
   }
