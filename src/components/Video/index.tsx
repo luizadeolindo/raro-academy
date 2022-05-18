@@ -4,8 +4,8 @@ import starNotFavorited from "../../assets/icons/elements/star-outline.svg";
 import { useAuthenticated } from "../VerifyAuth";
 
 export type VideoProps = {
-  handleFavorite: (e: React.MouseEvent, id: string) => Promise<void>
-  checkIThatVideoIsAfavoriteVideo: (id: string) => boolean
+  handleFavorite: (e: React.MouseEvent, id: string) => Promise<void>;
+  checkIThatVideoIsAfavoriteVideo: (id: string) => boolean;
   video: {
     nome: string;
     id: string;
@@ -20,21 +20,21 @@ export const Video = ({
   handleFavorite,
   checkIThatVideoIsAfavoriteVideo,
 }: VideoProps) => {
-  const {id, dataPublicacao, nome, thumbUrl} = video
+  const { id, dataPublicacao, nome, thumbUrl } = video;
   const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
   const { isAuthenticated } = useAuthenticated();
 
   return (
     <Link to={`/videos/${id}`} className="videoContainer">
       <div className="videoThumb">
-        <img src={thumbUrl} alt=''/>
+        <img src={thumbUrl} alt="videothumb" />
         {isAuthenticated && (
           <button className="favorite" onClick={(e) => handleFavorite(e, id)}>
-            {checkIThatVideoIsAfavoriteVideo(id) 
-            ? 
-            (<img src={starFavorited}  alt=''/>) 
-            : 
-            (<img src={starNotFavorited} alt=''/>)}
+            {checkIThatVideoIsAfavoriteVideo(id) ? (
+              <img src={starFavorited} alt="icon estrela preenchida" />
+            ) : (
+              <img src={starNotFavorited} alt="icon estrela não preenchida" />
+            )}
           </button>
         )}
         <p className="videoName">{nome}</p>

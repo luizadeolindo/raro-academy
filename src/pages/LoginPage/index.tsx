@@ -84,6 +84,7 @@ export const LoginPage = () => {
                 />
                 <button onClick={hidePassword} type="button">
                   <img
+                    alt="icon olho"
                     src={
                       showPassword ? iconOffHidePassword : iconOnHidePassword
                     }

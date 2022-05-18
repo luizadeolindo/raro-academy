@@ -2,7 +2,7 @@ import starFavorited from "../../assets/icons/elements/star-filled.svg";
 import { Link } from "react-router-dom";
 
 export type VideoFavoritedProps = {
-  handleRemoveAFavorite: (videoId: string) => Promise<void>
+  handleRemoveAFavorite: (videoId: string) => Promise<void>;
   video: {
     nome: string;
     id: string;
@@ -16,8 +16,7 @@ export const VideoFavorited = ({
   video,
   handleRemoveAFavorite,
 }: VideoFavoritedProps) => {
-  
-  const {id, dataPublicacao, nome, thumbUrl} = video
+  const { id, dataPublicacao, nome, thumbUrl } = video;
   const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
 
   return (
@@ -25,13 +24,13 @@ export const VideoFavorited = ({
       <div className="videoContainer">
         <div className="videoThumb">
           <Link to={`/videos/${id}`}>
-            <img src={thumbUrl} alt=""/>
+            <img src={thumbUrl} alt="videothumb" />
           </Link>
           <button
             className="favorite"
             onClick={(e) => handleRemoveAFavorite(id)}
           >
-            <img src={starFavorited}  alt=""/>
+            <img src={starFavorited} alt="icon estrela preenchida" />
           </button>
         </div>
         <Link to={`/videos/${id}`}>

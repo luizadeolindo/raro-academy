@@ -6,7 +6,7 @@ export const HeaderForm = () => {
   return (
     <div className="headerForm">
       <Link to="/">
-        <img src={LogoRaroPlay} />
+        <img alt="logo RaroPlay" src={LogoRaroPlay} />
       </Link>
     </div>
   );
