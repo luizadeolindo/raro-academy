@@ -75,7 +75,7 @@ const Playlist: React.FC<PlaylistProps> = ({
 
   return (
     <div className="home">
-      {isAuthenticated && (
+      {isAuthenticated ? (
         <PlaylistContainer>
           <PlaylistTitle title="Favoritos" />
           {favoriteVideos.length === 0 ? (
@@ -93,6 +93,8 @@ const Playlist: React.FC<PlaylistProps> = ({
             </SimpleSlider>
           )}
         </PlaylistContainer>
+      ) : (
+        <></>
       )}
 
       <PlaylistByTopics

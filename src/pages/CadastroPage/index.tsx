@@ -3,7 +3,7 @@ import { version as uuidVersion } from "uuid";
 import { validate as uuidValidate } from "uuid";
 import { Button } from "../../components/Button";
 import { Container } from "../../components/Container";
-import { FormTitle } from "../../components/FormTitle";
+import { Titulo } from "../../components/Titulo";
 import arrowBack from "../../assets/icons/elements/arrow-back.svg";
 import { HeaderForm } from "../../components/HeaderForm";
 import iconOffHidePassword from "../../assets/icons/elements/senha-exibir.svg";
@@ -69,7 +69,7 @@ export const CadastroPage = () => {
       <HeaderForm />
       <form className="containerCadastro" onSubmit={registerNewUser}>
         <div className="cadastroHeader">
-          <FormTitle title="Cadastro" />
+          <Titulo title="Cadastro" />
           <p>Desenvolva e amplie seu potencial na tecnologia.</p>
         </div>
         <div className="cadastroInputField">

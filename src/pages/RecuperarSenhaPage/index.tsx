@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "../../components/Button";
-import { FormTitle } from "../../components/FormTitle";
+import { Titulo } from "../../components/Titulo";
 import { HeaderForm } from "../../components/HeaderForm";
 import iconOffHidePassword from "../../assets/icons/elements/senha-exibir.svg";
 import iconOnHidePassword from "../../assets/icons/elements/senha-esconder.svg";
@@ -91,7 +91,7 @@ export const RecuperarSenhaPage = () => {
       <div className="containerFormForgotPassword">
         <form className="containerForgotPassword" onSubmit={getCode}>
           <div className="forgotPasswordHeader">
-            <FormTitle title="Esqueci a senha" />
+            <Titulo title="Esqueci a senha" />
             <p>
               Tranquilo, digite seu e-mail e enviaremos um código para a
               recuperação de senha.
@@ -124,7 +124,7 @@ export const RecuperarSenhaPage = () => {
 
         <form className="containerIhaveCode" onSubmit={resetPassword}>
           <div className="iHaveCodeHeader">
-            <FormTitle title="Já possuo o código" />
+            <Titulo title="Já possuo o código" />
             <p>
               Maravilha! Insira o código de recuperação que enviamos por e-mail
               e crie sua nova senha.

@@ -28,7 +28,7 @@ export const Video = ({
     <Link to={`/videos/${id}`} className="videoContainer">
       <div className="videoThumb">
         <img src={thumbUrl} alt="videothumb" />
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <button className="favorite" onClick={(e) => handleFavorite(e, id)}>
             {checkIThatVideoIsAfavoriteVideo(id) ? (
               <img src={starFavorited} alt="icon estrela preenchida" />
@@ -36,6 +36,8 @@ export const Video = ({
               <img src={starNotFavorited} alt="icon estrela não preenchida" />
             )}
           </button>
+        ) : (
+          <></>
         )}
         <p className="videoName">{nome}</p>
         <p className="videoDate">{dataFormatada}</p>

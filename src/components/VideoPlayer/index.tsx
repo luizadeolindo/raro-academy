@@ -75,7 +75,7 @@ export const VideoPlayer = ({
         <div className="titulo">
           <h1>
             {nome}{" "}
-            {isAuthenticated && (
+            {isAuthenticated ? (
               <button
                 className="favoritee"
                 onClick={(e) => handleFavorite(e, id)}
@@ -89,6 +89,8 @@ export const VideoPlayer = ({
                   />
                 )}
               </button>
+            ) : (
+              <></>
             )}
           </h1>
           <div className="createdAt">
@@ -96,7 +98,7 @@ export const VideoPlayer = ({
           </div>
         </div>
         <div className="v">
-          {video.thumbUrl && (
+          {video.thumbUrl ? (
             <ReactPlayer
               muted={true}
               width={"100%"}
@@ -106,6 +108,8 @@ export const VideoPlayer = ({
               url={url}
               light={thumbUrl}
             />
+          ) : (
+            <></>
           )}
         </div>
       </div>
