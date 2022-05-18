@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosApiInstance = axios.create();
 
-axiosApiInstance.defaults.baseURL = "https://3.221.159.196:3320";
+axiosApiInstance.defaults.baseURL = "http://3.221.159.196:3322";
 
 axiosApiInstance.interceptors.request.use(
   async (config: any) => {
