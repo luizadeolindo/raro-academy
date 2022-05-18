@@ -8,24 +8,7 @@ import editSvg from "../../assets/icons/elements/edit.svg";
 import apiClient from "../../services/api-client";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-
-type CommentProps = {
-  comments: () => Promise<void>;
-  comentario: {
-    id: string;
-    upVotes: string;
-    downVotes: string;
-    meuVote: {
-      vote: string;
-    };
-    texto: string;
-    aluno: {
-      nome: string;
-      id: string;
-      foto: string;
-    };
-  };
-};
+import { CommentProps } from "./CommentTypes";
 
 export const Comment = ({ comentario, comments }: CommentProps) => {
   const ID = localStorage.getItem("id");

@@ -2,14 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthenticated } from "../../components/VerifyAuth";
 import "./Navigation.css";
-
-interface IUser {
-  nome: string;
-  foto: string;
-}
+import { NavigationProps } from "./NavigationTypes";
 
 export const Navigation = ({ buscarVideos }: any) => {
-  const [user, setUser] = useState<IUser>({ nome: "", foto: "" });
+  const [user, setUser] = useState<NavigationProps>({ nome: "", foto: "" });
   const navigate = useNavigate();
   const { isAuthenticated } = useAuthenticated();
 

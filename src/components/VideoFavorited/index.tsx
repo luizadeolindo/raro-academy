@@ -1,16 +1,6 @@
 import starFavorited from "../../assets/icons/elements/star-filled.svg";
 import { Link } from "react-router-dom";
-
-export type VideoFavoritedProps = {
-  handleRemoveAFavorite: (videoId: string) => Promise<void>;
-  video: {
-    nome: string;
-    id: string;
-    dataPublicacao: string;
-    createdAt: string;
-    thumbUrl: string;
-  };
-};
+import { VideoFavoritedProps } from "./VideoFavoritedTypes";
 
 export const VideoFavorited = ({
   video,

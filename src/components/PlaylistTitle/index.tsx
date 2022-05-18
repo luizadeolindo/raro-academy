@@ -1,9 +1,6 @@
 import "./PlaylistTitle.css";
+import { TitleProps } from "./PlaylistTitleProps";
 
-type PropsTitle = {
-  title: string;
-};
-
-export const PlaylistTitle = (props: PropsTitle) => {
+export const PlaylistTitle = (props: TitleProps) => {
   return <h2 className="playlistTitle">{props.title}</h2>;
 };
