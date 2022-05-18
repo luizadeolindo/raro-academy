@@ -8,7 +8,7 @@ const Header = ({ buscarVideos }: any) => (
       <div className="content">
         <div>
           <Link to="/">
-            <img className="logo" src={LogoRaroPlay} />
+            <img alt="logo RaroPlay" className="logo" src={LogoRaroPlay} />
           </Link>
         </div>
         <nav className="navigation">

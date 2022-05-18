@@ -84,7 +84,7 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
 
   return (
     <div className="comment">
-      <img src={comentario.aluno.foto} alt="" />
+      <img src={comentario.aluno.foto} alt="foto aluno" />
       <div className="ttttttttt">
         <h2>{comentario.aluno.nome}</h2>
         <div className="commentBox">
@@ -114,7 +114,7 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
                     ? thumbsUpFilled
                     : thumbsUpOutline
                 }
-                alt=""
+                alt="icon upvote"
                 onClick={curtir}
               />
               {comentario.upVotes}
@@ -126,7 +126,7 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
                     ? thumbsDownFilled
                     : thumbsDownOutline
                 }
-                alt=""
+                alt="icon downvote"
                 onClick={descurtir}
               />
               {comentario.downVotes}
@@ -135,12 +135,16 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
           <div className="xx">
             <div className="xx-options">
               {comentario.aluno.id === ID ? (
-                <img src={deleteSvg} alt="" onClick={deleteComment} />
+                <img
+                  src={deleteSvg}
+                  alt="icon lixeira"
+                  onClick={deleteComment}
+                />
               ) : (
                 <></>
               )}
               {comentario.aluno.id === ID ? (
-                <img src={editSvg} alt="" onClick={editComment} />
+                <img src={editSvg} alt="icon editar" onClick={editComment} />
               ) : (
                 <></>
               )}

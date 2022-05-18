@@ -153,6 +153,7 @@ export const RecuperarSenhaPage = () => {
                 />
                 <button type="button" onClick={hidePassword}>
                   <img
+                    alt="icon olho"
                     src={
                       showPassword ? iconOffHidePassword : iconOnHidePassword
                     }
@@ -171,6 +172,7 @@ export const RecuperarSenhaPage = () => {
                 />
                 <button type="button" onClick={hideNewPassword}>
                   <img
+                    alt="icon olho"
                     src={
                       showConfirmedPassword
                         ? iconOffHidePassword

@@ -84,16 +84,19 @@ export const VideosLaterais = ({
       <div className="aside">
         <Link to={`/videos/${id}`}>
           <div className="videosLaterais">
-            <img src={thumbUrl} alt="" />
+            <img src={thumbUrl} alt="videothumb" />
             {isAuthenticated && (
               <button
                 className="favorite"
                 onClick={(e) => handleFavorite(e, id)}
               >
                 {checkIThatVideoIsAfavoriteVideo(id) ? (
-                  <img src={starFavorited} alt="" />
+                  <img src={starFavorited} alt="icon estrela preenchida" />
                 ) : (
-                  <img src={starNotFavorited} alt="" />
+                  <img
+                    src={starNotFavorited}
+                    alt="icon estrela não preenchida"
+                  />
                 )}
               </button>
             )}

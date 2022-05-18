@@ -81,9 +81,12 @@ export const VideoPlayer = ({
                 onClick={(e) => handleFavorite(e, id)}
               >
                 {checkIThatVideoIsAfavoriteVideo(id) ? (
-                  <img src={starFavorited} alt="" />
+                  <img src={starFavorited} alt="icon estrela preenchida" />
                 ) : (
-                  <img src={starNotFavorited} alt="" />
+                  <img
+                    src={starNotFavorited}
+                    alt="icon estrela não preenchida"
+                  />
                 )}
               </button>
             )}

@@ -9,7 +9,7 @@ export const NotFoundPage = () => {
       <div className="btnBack">
         <Link to="/">
           {" "}
-          <img src={arrowBack} /> Voltar
+          <img alt="icon arrow back" src={arrowBack} /> Voltar
         </Link>
       </div>
     </div>
