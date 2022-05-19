@@ -81,7 +81,7 @@ export const VisualizacaoVideosPage = () => {
     listVideos();
 
     if (isAuthenticated) getFavoriteVideos();
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     loadVideo();

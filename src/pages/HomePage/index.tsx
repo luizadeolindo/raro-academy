@@ -44,7 +44,7 @@ const HomePage = () => {
     buscarVideos();
 
     if (isAuthenticated) getFavoriteVideos();
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <>

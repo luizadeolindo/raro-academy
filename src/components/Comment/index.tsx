@@ -7,7 +7,7 @@ import deleteSvg from "../../assets/icons/elements/delete.svg";
 import editSvg from "../../assets/icons/elements/edit.svg";
 import apiClient from "../../services/api-client";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import { CommentProps } from "./CommentTypes";
 
 export const Comment = ({ comentario, comments }: CommentProps) => {
