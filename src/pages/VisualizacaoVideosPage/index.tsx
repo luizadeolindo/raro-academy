@@ -132,13 +132,9 @@ export const VisualizacaoVideosPage = () => {
             </div>
             <div className="videos-laterais-container">
               {!isAuthenticated ? (
-                nome === "aulão" ? (
-                  <p>Faça login para ter acesso aos videos da Playlist.</p>
-                ) : (
-                  new Set(playListVideos)
-                )
+                <p>Faça login para ter acesso aos videos da Playlist.</p>
               ) : (
-                <></>
+                new Set(playListVideos)
               )}
             </div>
           </div>
