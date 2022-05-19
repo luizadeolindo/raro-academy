@@ -16,17 +16,6 @@ const Playlist: React.FC<PlaylistProps> = ({
 }) => {
   const { isAuthenticated } = useAuthenticated();
 
-  const favoriteVideosId = useMemo<string[]>(() => {
-    const favoriteVideosIdArr: null | string[] = [];
-
-    if (favoriteVideos.length > 0) {
-      favoriteVideos.map((f) => {
-        favoriteVideosIdArr.push(f.id);
-      });
-    }
-    return favoriteVideosIdArr;
-  }, [favoriteVideos]);
-
   const handleAddNewFavorite = async (videoId: string) => {
     const url = `/videos/${videoId}/favoritos`;
 
@@ -53,7 +42,15 @@ const Playlist: React.FC<PlaylistProps> = ({
   };
 
   const checkIThatVideoIsAfavoriteVideo = (id: string) => {
-    const videoId = favoriteVideosId.filter((fv) => {
+    const favoriteVideosIdArr: null | string[] = [];
+
+    if (favoriteVideos.length > 0) {
+      favoriteVideos.forEach((fv) => {
+        favoriteVideosIdArr.push(fv.id);
+      });
+    }
+
+    const videoId = favoriteVideosIdArr.filter((fv) => {
       return fv === id;
     });
 
