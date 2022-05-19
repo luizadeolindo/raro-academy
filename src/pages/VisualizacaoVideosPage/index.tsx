@@ -68,7 +68,7 @@ export const VisualizacaoVideosPage = () => {
   const newComment = async (e: any) => {
     e.preventDefault();
 
-    if (input) {
+    if (input.length > 0) {
       await apiClient.post(`/videos/${id}/comentarios`, { texto: input });
       comments();
       setInput("");
@@ -82,11 +82,6 @@ export const VisualizacaoVideosPage = () => {
 
     if (isAuthenticated) getFavoriteVideos();
   }, [isAuthenticated]);
-
-  useEffect(() => {
-    loadVideo();
-    comments();
-  }, [id]);
 
   return (
     <>
