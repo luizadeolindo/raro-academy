@@ -13,6 +13,7 @@ const Playlist: React.FC<PlaylistProps> = ({
   videos,
   favoriteVideos,
   getFavoriteVideos,
+  loading,
 }) => {
   const { isAuthenticated } = useAuthenticated();
 
@@ -98,6 +99,7 @@ const Playlist: React.FC<PlaylistProps> = ({
         videos={videos}
         handleFavorite={handleFavorite}
         checkIThatVideoIsAfavoriteVideo={checkIThatVideoIsAfavoriteVideo}
+        loading={loading}
       />
     </div>
   );

@@ -4,11 +4,15 @@ import { PlaylistContainer } from "../PlaylistContainer";
 import { SimpleSlider } from "../SimpleSlider";
 import { PlaylistByTopicsProps } from "./PlaylistByTopicsTypes";
 import { Video } from "../Video";
+import Skeleton from "react-loading-skeleton";
+import { VideoSkeleton } from "../VideoSkeleton";
+import { PlaylistByTopicSkeleton } from "../PlaylistByTopicSkeleton";
 
 export const PlaylistByTopics: React.FC<PlaylistByTopicsProps> = ({
   videos,
   handleFavorite,
   checkIThatVideoIsAfavoriteVideo,
+  loading,
 }) => {
   const [topics, setTopics] = useState<string[]>([]);
 
@@ -16,7 +20,7 @@ export const PlaylistByTopics: React.FC<PlaylistByTopicsProps> = ({
     const getTopics = async () => {
       const videoTopics: string[] = [];
 
-      videos.map((v) => {
+      videos.forEach((v) => {
         if (!videoTopics.includes(v.topico)) {
           videoTopics.push(v.topico);
         }
@@ -32,26 +36,40 @@ export const PlaylistByTopics: React.FC<PlaylistByTopicsProps> = ({
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
+  if (loading) {
+    return (
+      <div>
+        <PlaylistByTopicSkeleton />
+      </div>
+    );
+  }
+
   return (
     <div>
       {topics.map((t) => (
         <div key={t}>
           <PlaylistContainer>
             <PlaylistTitle title={capitalizeFirstLetter(t)} />
-            <SimpleSlider>
-              {videos
-                .filter((v) => v.topico === t)
-                .map((video) => (
-                  <Video
-                    video={video}
-                    key={video.id}
-                    handleFavorite={handleFavorite}
-                    checkIThatVideoIsAfavoriteVideo={
-                      checkIThatVideoIsAfavoriteVideo
-                    }
-                  />
-                ))}
-            </SimpleSlider>
+            {loading ? (
+              <SimpleSlider>
+                <VideoSkeleton />
+              </SimpleSlider>
+            ) : (
+              <SimpleSlider>
+                {videos
+                  .filter((v) => v.topico === t)
+                  .map((video) => (
+                    <Video
+                      video={video}
+                      key={video.id}
+                      handleFavorite={handleFavorite}
+                      checkIThatVideoIsAfavoriteVideo={
+                        checkIThatVideoIsAfavoriteVideo
+                      }
+                    />
+                  ))}
+              </SimpleSlider>
+            )}
           </PlaylistContainer>
         </div>
       ))}
