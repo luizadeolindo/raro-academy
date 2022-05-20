@@ -25,6 +25,12 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
   const [edit, setEdit] = useState(false);
   const [novoTexto, setNovoTexto] = useState("");
 
+  const onChangeNewText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setNovoTexto(e.target.value);
+  };
+
   const curtir = async () => {
     if (comentario.meuVote?.vote === "up") {
       deleteUpVote(id, comentario.id);
@@ -77,7 +83,7 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
                   type="text"
                   value={novoTexto}
                   placeholder="Edite o seu comentário..."
-                  onChange={(e) => setNovoTexto(e.target.value)}
+                  onChange={(e) => onChangeNewText(e)}
                   className={edit ? "showEdit" : "editable"}
                 />
               </form>

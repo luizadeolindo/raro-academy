@@ -16,6 +16,18 @@ export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState("");
 
+  const onChangeSetEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setEmail(e.target.value);
+  };
+
+  const onChangeSetSenha = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setSenha(e.target.value);
+  };
+
   const hidePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -68,7 +80,7 @@ export const LoginPage = () => {
               Usuário
               <input
                 type="email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => onChangeSetEmail(e)}
                 required
               />
             </label>
@@ -79,7 +91,7 @@ export const LoginPage = () => {
               <div className="iconHidePassword">
                 <input
                   type={showPassword ? "text" : "password"}
-                  onChange={(e) => setSenha(e.target.value)}
+                  onChange={(e) => onChangeSetSenha(e)}
                   required
                 />
                 <button onClick={hidePassword} type="button">

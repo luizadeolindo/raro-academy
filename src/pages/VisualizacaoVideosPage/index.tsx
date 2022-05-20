@@ -29,6 +29,12 @@ export const VisualizacaoVideosPage = () => {
     []
   );
 
+  const onChangeSetInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setInput(e.target.value);
+  };
+
   const getFavoriteVideos = async () => {
     const url = `/videos/favoritos`;
 
@@ -102,7 +108,7 @@ export const VisualizacaoVideosPage = () => {
                   type="text"
                   value={input}
                   placeholder="adicionar comentário..."
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => onChangeSetInput(e)}
                 />
                 <Button type="submit">enviar</Button>
               </form>

@@ -23,6 +23,30 @@ export const CadastroPage = () => {
 
   const navigate = useNavigate();
 
+  const onChangeSetNome = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setNome(e.target.value);
+  };
+
+  const onChangeSetEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setEmail(e.target.value);
+  };
+
+  const onChangeSetSenha = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setSenha(e.target.value);
+  };
+
+  const onChangeSetCodigoAcesso = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setCodigoAcesso(e.target.value);
+  };
+
   const hidePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -79,7 +103,7 @@ export const CadastroPage = () => {
               <input
                 type="text"
                 required
-                onChange={(e) => setNome(e.target.value)}
+                onChange={(e) => onChangeSetNome(e)}
               />
             </label>
           </div>
@@ -89,7 +113,7 @@ export const CadastroPage = () => {
               <input
                 type="email"
                 required
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => onChangeSetEmail(e)}
               />
             </label>
           </div>
@@ -100,7 +124,7 @@ export const CadastroPage = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   required
-                  onChange={(e) => setSenha(e.target.value)}
+                  onChange={(e) => onChangeSetSenha(e)}
                 />
                 <button type="button" onClick={hidePassword}>
                   <img
@@ -119,7 +143,7 @@ export const CadastroPage = () => {
               <input
                 type="text"
                 required
-                onChange={(e) => setCodigoAcesso(e.target.value)}
+                onChange={(e) => onChangeSetCodigoAcesso(e)}
               />
             </label>
           </div>

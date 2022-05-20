@@ -21,6 +21,30 @@ export const RecuperarSenhaPage = () => {
   const [segundaMensagem, setSegundaMensagem] = useState("");
   const [secondLoading, setSecondLoading] = useState(false);
 
+  const onChangeSetEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setEmail(e.target.value);
+  };
+
+  const onChangeSetCodigo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setCodigo(e.target.value);
+  };
+
+  const onChangeSetSenha = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setSenha(e.target.value);
+  };
+
+  const onChangeSetNovaSenha = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setNovaSenha(e.target.value);
+  };
+
   const getCode = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -103,7 +127,7 @@ export const RecuperarSenhaPage = () => {
                 E-mail
                 <input
                   type="email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => onChangeSetEmail(e)}
                   value={email}
                   required
                 />
@@ -136,7 +160,7 @@ export const RecuperarSenhaPage = () => {
                 Código
                 <input
                   type="text"
-                  onChange={(e) => setCodigo(e.target.value)}
+                  onChange={(e) => onChangeSetCodigo(e)}
                   value={codigo}
                   required
                 />
@@ -147,7 +171,7 @@ export const RecuperarSenhaPage = () => {
                 Senha
                 <input
                   type={showPassword ? "text" : "password"}
-                  onChange={(e) => setSenha(e.target.value)}
+                  onChange={(e) => onChangeSetSenha(e)}
                   value={senha}
                   required
                 />
@@ -166,7 +190,7 @@ export const RecuperarSenhaPage = () => {
                 Nova senha
                 <input
                   type={showConfirmedPassword ? "text" : "password"}
-                  onChange={(e) => setNovaSenha(e.target.value)}
+                  onChange={(e) => onChangeSetSenha(e)}
                   value={novaSenha}
                   required
                 />
