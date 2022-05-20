@@ -9,14 +9,7 @@ import apiClient from "../../services/api-client";
 import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 import { CommentProps } from "./CommentTypes";
-import {
-  deleteCommentary,
-  deleteDownVote,
-  deleteUpVote,
-  patchCommentary,
-  putDownVote,
-  putUpVote,
-} from "../../services/comments";
+import { patchCommentary } from "../../services/comments";
 
 export const Comment = ({ comentario, comments }: CommentProps) => {
   const ID = localStorage.getItem("id");
@@ -33,24 +26,32 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
 
   const curtir = async () => {
     if (comentario.meuVote?.vote === "up") {
-      deleteUpVote(id, comentario.id);
+      await apiClient.delete(
+        `/videos/${id}/comentarios/${comentario.id}/votes`
+      );
       return comments();
     }
-    putUpVote(id, comentario.id);
+    await apiClient.put(`/videos/${id}/comentarios/${comentario.id}/votes`, {
+      vote: "up",
+    });
     comments();
   };
 
   const descurtir = async () => {
     if (comentario.meuVote?.vote === "down") {
-      deleteDownVote(id, comentario.id);
+      await apiClient.delete(
+        `/videos/${id}/comentarios/${comentario.id}/votes`
+      );
       return comments();
     }
-    putDownVote(id, comentario.id);
+    await apiClient.put(`/videos/${id}/comentarios/${comentario.id}/votes`, {
+      vote: "down",
+    });
     comments();
   };
 
   const deleteComment = async () => {
-    deleteCommentary(id, comentario.id);
+    await apiClient.delete(`/videos/${id}/comentarios/${comentario.id}`);
     comments();
     setEdit(false);
   };
@@ -68,7 +69,6 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
       setNovoTexto("");
     }
   };
-
   return (
     <div className="comment">
       <img src={comentario.aluno.foto} alt="foto aluno" />

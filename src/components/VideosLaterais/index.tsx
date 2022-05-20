@@ -6,8 +6,6 @@ import starNotFavorited from "../../assets/icons/elements/star-outline.svg";
 import { useAuthenticated } from "../VerifyAuth";
 import { VideoThumbnailProps } from "../Video/VideoThumbnailTypes";
 import "./videosLaterais.css";
-import { addNewFav, deleteNewFav } from "../../services/videos";
-import formatDate from "../../helpers/FormatDate";
 
 type TituloProps = {
   videoLateral: {
@@ -26,7 +24,7 @@ export const VideosLaterais = ({
   getFavoriteVideos,
 }: TituloProps) => {
   const { id, dataPublicacao, thumbUrl, descricao } = videoLateral;
-  formatDate(dataPublicacao)
+  const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
   const { isAuthenticated } = useAuthenticated();
 
   const favoriteVideosId = useMemo<string[]>(() => {
@@ -41,8 +39,10 @@ export const VideosLaterais = ({
   }, [favoriteVideos]);
 
   const handleAddNewFavorite = async (videoId: string) => {
+    const url = `/videos/${videoId}/favoritos`;
+
     try {
-      addNewFav(videoId);
+      await apiClient.post(url);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
@@ -50,8 +50,10 @@ export const VideosLaterais = ({
   };
 
   const handleRemoveAFavorite = async (videoId: string) => {
+    const url = `/videos/${videoId}/favoritos`;
+
     try {
-      deleteNewFav(videoId);
+      await apiClient.delete(url);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
@@ -103,7 +105,7 @@ export const VideosLaterais = ({
           </div>
           <div className="textoContainer">
             <h3> {descricao} </h3>
-            <p>{formatDate(dataPublicacao)}</p>
+            <p>{dataFormatada}</p>
           </div>
         </Link>
       </div>
