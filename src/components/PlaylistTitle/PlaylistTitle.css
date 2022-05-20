@@ -1,18 +1,31 @@
 .playlistTitle {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2.25rem;
-    line-height: 44px;
-    color: #4E47C2;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 44px;
+  color: #4e47c2;
+}
+
+.playlistTitleSkeleton {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 44px;
+  color: #4e47c2;
+  margin-bottom: 20px;
 }
 
 .playlistTitle::after {
-    content: "";
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(270.01deg, #4E47C2 -0.01%, rgba(78, 71, 194, 0) 237.73%);
-    border-radius: 4px;
-    margin-top: 8px;
-    margin-bottom: 44px;
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(
+    270.01deg,
+    #4e47c2 -0.01%,
+    rgba(78, 71, 194, 0) 237.73%
+  );
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-bottom: 44px;
 }

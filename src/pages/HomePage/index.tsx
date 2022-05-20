@@ -54,6 +54,7 @@ const HomePage = () => {
         videos={videos}
         favoriteVideos={favoriteVideos}
         getFavoriteVideos={getFavoriteVideos}
+        loading={loading}
       />
       <SpotlightSection />
       <CTASection />
