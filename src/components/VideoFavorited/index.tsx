@@ -1,13 +1,14 @@
 import starFavorited from "../../assets/icons/elements/star-filled.svg";
 import { Link } from "react-router-dom";
 import { VideoFavoritedProps } from "./VideoFavoritedTypes";
+import formatDate from "../../helpers/FormatDate";
 
 export const VideoFavorited = ({
   video,
   handleRemoveAFavorite,
 }: VideoFavoritedProps) => {
   const { id, dataPublicacao, nome, thumbUrl } = video;
-  const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
+  formatDate(dataPublicacao);
 
   return (
     <>
@@ -26,7 +27,7 @@ export const VideoFavorited = ({
         <Link to={`/videos/${id}`}>
           <div>
             <p className="videoName">{nome}</p>
-            <p className="videoDate">{dataFormatada}</p>
+            <p className="videoDate">{formatDate(dataPublicacao)}</p>
           </div>
         </Link>
       </div>

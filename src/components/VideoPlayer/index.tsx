@@ -7,6 +7,7 @@ import { useAuthenticated } from "../VerifyAuth";
 import starFavorited from "../../assets/icons/elements/star-filled.svg";
 import starNotFavorited from "../../assets/icons/elements/star-outline.svg";
 import { addNewFav, deleteNewFav } from "../../services/videos";
+import formatDate from "../../helpers/FormatDate";
 
 export const VideoPlayer = ({
   video,
@@ -14,7 +15,7 @@ export const VideoPlayer = ({
   getFavoriteVideos,
 }: VideoType) => {
   const { dataPublicacao, descricao, nome, thumbUrl, url, id } = video;
-  const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
+  formatDate(dataPublicacao);
 
   const { isAuthenticated } = useAuthenticated();
 
@@ -91,7 +92,7 @@ export const VideoPlayer = ({
             )}
           </h1>
           <div className="createdAt">
-            {dataFormatada} | {descricao}
+            {formatDate(dataPublicacao)} | {descricao}
           </div>
         </div>
         <div className="v">

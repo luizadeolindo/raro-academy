@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import starFavorited from "../../assets/icons/elements/star-filled.svg";
 import starNotFavorited from "../../assets/icons/elements/star-outline.svg";
+import formatDate from "../../helpers/FormatDate";
 import { useAuthenticated } from "../VerifyAuth";
 
 export type VideoProps = {
@@ -21,7 +22,7 @@ export const Video = ({
   checkIThatVideoIsAfavoriteVideo,
 }: VideoProps) => {
   const { id, dataPublicacao, nome, thumbUrl } = video;
-  const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
+  formatDate(dataPublicacao);
   const { isAuthenticated } = useAuthenticated();
 
   return (
@@ -40,7 +41,7 @@ export const Video = ({
           <></>
         )}
         <p className="videoName">{nome}</p>
-        <p className="videoDate">{dataFormatada}</p>
+        <p className="videoDate">{formatDate(dataPublicacao)}</p>
       </div>
     </Link>
   );

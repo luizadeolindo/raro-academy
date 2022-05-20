@@ -7,6 +7,7 @@ import { useAuthenticated } from "../VerifyAuth";
 import { VideoThumbnailProps } from "../Video/VideoThumbnailTypes";
 import "./videosLaterais.css";
 import { addNewFav, deleteNewFav } from "../../services/videos";
+import formatDate from "../../helpers/FormatDate";
 
 type TituloProps = {
   videoLateral: {
@@ -25,7 +26,7 @@ export const VideosLaterais = ({
   getFavoriteVideos,
 }: TituloProps) => {
   const { id, dataPublicacao, thumbUrl, descricao } = videoLateral;
-  const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
+  formatDate(dataPublicacao)
   const { isAuthenticated } = useAuthenticated();
 
   const favoriteVideosId = useMemo<string[]>(() => {
@@ -102,7 +103,7 @@ export const VideosLaterais = ({
           </div>
           <div className="textoContainer">
             <h3> {descricao} </h3>
-            <p>{dataFormatada}</p>
+            <p>{formatDate(dataPublicacao)}</p>
           </div>
         </Link>
       </div>
