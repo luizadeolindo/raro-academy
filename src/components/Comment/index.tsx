@@ -9,6 +9,14 @@ import apiClient from "../../services/api-client";
 import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 import { CommentProps } from "./CommentTypes";
+import {
+  deleteCommentary,
+  deleteDownVote,
+  deleteUpVote,
+  patchCommentary,
+  putDownVote,
+  putUpVote,
+} from "../../services/comments";
 
 export const Comment = ({ comentario, comments }: CommentProps) => {
   const ID = localStorage.getItem("id");
@@ -19,32 +27,24 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
 
   const curtir = async () => {
     if (comentario.meuVote?.vote === "up") {
-      await apiClient.delete(
-        `/videos/${id}/comentarios/${comentario.id}/votes`
-      );
+      deleteUpVote(id, comentario.id);
       return comments();
     }
-    await apiClient.put(`/videos/${id}/comentarios/${comentario.id}/votes`, {
-      vote: "up",
-    });
+    putUpVote(id, comentario.id);
     comments();
   };
 
   const descurtir = async () => {
     if (comentario.meuVote?.vote === "down") {
-      await apiClient.delete(
-        `/videos/${id}/comentarios/${comentario.id}/votes`
-      );
+      deleteDownVote(id, comentario.id);
       return comments();
     }
-    await apiClient.put(`/videos/${id}/comentarios/${comentario.id}/votes`, {
-      vote: "down",
-    });
+    putDownVote(id, comentario.id);
     comments();
   };
 
   const deleteComment = async () => {
-    await apiClient.delete(`/videos/${id}/comentarios/${comentario.id}`);
+    deleteCommentary(id, comentario.id);
     comments();
     setEdit(false);
   };
@@ -56,9 +56,7 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
   const editarComment = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (novoTexto) {
-      await apiClient.patch(`/videos/${id}/comentarios/${comentario.id}`, {
-        texto: novoTexto,
-      });
+      patchCommentary(id, comentario.id, novoTexto);
       setEdit(false);
       comments();
       setNovoTexto("");

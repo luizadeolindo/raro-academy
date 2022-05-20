@@ -8,6 +8,7 @@ import { PlaylistContainer } from "../PlaylistContainer";
 import { Video } from "../Video";
 import { SimpleSlider } from "../SimpleSlider";
 import { PlaylistByTopics } from "../PlaylistByTopics";
+import { addNewFav, deleteNewFav } from "../../services/videos";
 
 const Playlist: React.FC<PlaylistProps> = ({
   videos,
@@ -18,10 +19,8 @@ const Playlist: React.FC<PlaylistProps> = ({
   const { isAuthenticated } = useAuthenticated();
 
   const handleAddNewFavorite = async (videoId: string) => {
-    const url = `/videos/${videoId}/favoritos`;
-
     try {
-      await apiClient.post(url);
+      addNewFav(videoId);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
@@ -29,10 +28,8 @@ const Playlist: React.FC<PlaylistProps> = ({
   };
 
   const handleRemoveAFavorite = async (videoId: string) => {
-    const url = `/videos/${videoId}/favoritos`;
-
     try {
-      await apiClient.delete(url);
+      deleteNewFav(videoId);
       getFavoriteVideos();
       return;
     } catch (error) {
