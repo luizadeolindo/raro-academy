@@ -9,7 +9,6 @@ import apiClient from "../../services/api-client";
 import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 import { CommentProps } from "./CommentTypes";
-import { patchCommentary } from "../../services/comments";
 
 export const Comment = ({ comentario, comments }: CommentProps) => {
   const ID = localStorage.getItem("id");
@@ -63,7 +62,9 @@ export const Comment = ({ comentario, comments }: CommentProps) => {
   const editarComment = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (novoTexto) {
-      patchCommentary(id, comentario.id, novoTexto);
+      await apiClient.patch(`/videos/${id}/comentarios/${comentario.id}`, {
+        texto: novoTexto,
+      });
       setEdit(false);
       comments();
       setNovoTexto("");
