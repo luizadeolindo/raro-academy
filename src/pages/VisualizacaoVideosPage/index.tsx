@@ -9,6 +9,7 @@ import { Button } from "../../components/Button";
 import apiClient from "../../services/api-client";
 import Header from "../../components/Header";
 import "./videoPageStyle.css";
+import { postCommentary } from "../../services/comments";
 
 export const VisualizacaoVideosPage = () => {
   const [video, setVideo] = useState<VideoThumbnailProps>(
@@ -69,7 +70,7 @@ export const VisualizacaoVideosPage = () => {
     e.preventDefault();
 
     if (input.length > 0) {
-      await apiClient.post(`/videos/${id}/comentarios`, { texto: input });
+      postCommentary(id, input);
       comments();
       setInput("");
     }

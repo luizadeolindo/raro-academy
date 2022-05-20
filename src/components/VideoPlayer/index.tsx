@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { useAuthenticated } from "../VerifyAuth";
 import starFavorited from "../../assets/icons/elements/star-filled.svg";
 import starNotFavorited from "../../assets/icons/elements/star-outline.svg";
+import { addNewFav, deleteNewFav } from "../../services/videos";
 
 export const VideoPlayer = ({
   video,
@@ -29,10 +30,8 @@ export const VideoPlayer = ({
   }, [favoriteVideos]);
 
   const handleAddNewFavorite = async (videoId: string) => {
-    const url = `/videos/${videoId}/favoritos`;
-
     try {
-      await apiClient.post(url);
+      addNewFav(videoId);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
@@ -40,10 +39,8 @@ export const VideoPlayer = ({
   };
 
   const handleRemoveAFavorite = async (videoId: string) => {
-    const url = `/videos/${videoId}/favoritos`;
-
     try {
-      await apiClient.delete(url);
+      deleteNewFav(videoId);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");

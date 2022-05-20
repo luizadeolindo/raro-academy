@@ -6,6 +6,7 @@ import starNotFavorited from "../../assets/icons/elements/star-outline.svg";
 import { useAuthenticated } from "../VerifyAuth";
 import { VideoThumbnailProps } from "../Video/VideoThumbnailTypes";
 import "./videosLaterais.css";
+import { addNewFav, deleteNewFav } from "../../services/videos";
 
 type TituloProps = {
   videoLateral: {
@@ -39,10 +40,8 @@ export const VideosLaterais = ({
   }, [favoriteVideos]);
 
   const handleAddNewFavorite = async (videoId: string) => {
-    const url = `/videos/${videoId}/favoritos`;
-
     try {
-      await apiClient.post(url);
+      addNewFav(videoId);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
@@ -50,10 +49,8 @@ export const VideosLaterais = ({
   };
 
   const handleRemoveAFavorite = async (videoId: string) => {
-    const url = `/videos/${videoId}/favoritos`;
-
     try {
-      await apiClient.delete(url);
+      deleteNewFav(videoId);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
