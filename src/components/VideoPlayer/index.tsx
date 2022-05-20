@@ -6,8 +6,6 @@ import { useMemo } from "react";
 import { useAuthenticated } from "../VerifyAuth";
 import starFavorited from "../../assets/icons/elements/star-filled.svg";
 import starNotFavorited from "../../assets/icons/elements/star-outline.svg";
-import { addNewFav, deleteNewFav } from "../../services/videos";
-import formatDate from "../../helpers/FormatDate";
 
 export const VideoPlayer = ({
   video,
@@ -15,7 +13,7 @@ export const VideoPlayer = ({
   getFavoriteVideos,
 }: VideoType) => {
   const { dataPublicacao, descricao, nome, thumbUrl, url, id } = video;
-  formatDate(dataPublicacao);
+  const dataFormatada = new Date(dataPublicacao).toLocaleDateString("pt-br");
 
   const { isAuthenticated } = useAuthenticated();
 
@@ -31,8 +29,10 @@ export const VideoPlayer = ({
   }, [favoriteVideos]);
 
   const handleAddNewFavorite = async (videoId: string) => {
+    const url = `/videos/${videoId}/favoritos`;
+
     try {
-      addNewFav(videoId);
+      await apiClient.post(url);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
@@ -40,8 +40,10 @@ export const VideoPlayer = ({
   };
 
   const handleRemoveAFavorite = async (videoId: string) => {
+    const url = `/videos/${videoId}/favoritos`;
+
     try {
-      deleteNewFav(videoId);
+      await apiClient.delete(url);
       getFavoriteVideos();
     } catch (error) {
       console.log("Error to favorite a new video");
@@ -92,7 +94,7 @@ export const VideoPlayer = ({
             )}
           </h1>
           <div className="createdAt">
-            {formatDate(dataPublicacao)} | {descricao}
+            {dataFormatada} | {descricao}
           </div>
         </div>
         <div className="v">
